@@ -8,7 +8,7 @@ Rewrite of the Raspberry Pi Photobooth
 
 - Use HDMI display (unplug touchscreen)
 - Install Manjaro (ARM Raspberry XFCE, guide written with 23.02)
-  - create default user `photobooth` 
+  - create default user `photobooth`, sudoer, with autologin
 - Update whole system with `sudo pacman -Syu`
 - Edit `/boot/config.txt`
 ````
@@ -29,6 +29,7 @@ Option "TransformationMatrix" "-1 0 1 0 -1 1 0 0 1"
 ````
 - Disable screensaver and lock screen using GUI `All Applications > Screensaver`
 - Disable screen blanking using GUI `All Applications > Power Manager`
+- Disable `check for updates` in `All Applications > Add/Remove Software > Preferences`
 
 ## GPIO access
 
@@ -67,4 +68,12 @@ virtualenv --system-site-packages ~/photobooth-venv
 
 ````
 ~/photobooth-venv/bin/pip install git+https://github.com/MrFrangipane/frangitron_photobooth.git
+````
+
+## Autostart
+
+- Add the following command to startup applications in `Settings > Session and Startup`
+
+````
+/home/photobooth/photobooth-venv/bin/python -m frangitron_photobooth
 ````
