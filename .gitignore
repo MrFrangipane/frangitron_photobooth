@@ -1,3 +1,4 @@
 .idea
 .fileorganizer
 venv
+__pycache__
